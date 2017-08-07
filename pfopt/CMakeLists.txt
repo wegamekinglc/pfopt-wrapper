@@ -1,0 +1,17 @@
+# add_definitions(-DPFOPF_EXPORTS)
+
+file(GLOB_RECURSE PFOPT_FILES "*.h" "*.hpp" "*.cpp")
+add_library(pfopt STATIC ${PFOPT_FILES})
+
+target_link_libraries(pfopt ifconsol)
+target_link_libraries(pfopt ifmodintr)
+target_link_libraries(pfopt libcoinblas)
+target_link_libraries(pfopt libcoinhsl)
+target_link_libraries(pfopt libcoinlapack)
+target_link_libraries(pfopt libcoinmetis)
+target_link_libraries(pfopt libifcoremt)
+target_link_libraries(pfopt libifport)
+target_link_libraries(pfopt libipopt)
+target_link_libraries(pfopt libirc)
+target_link_libraries(pfopt libmmt)
+target_link_libraries(pfopt svml_dispmt)
