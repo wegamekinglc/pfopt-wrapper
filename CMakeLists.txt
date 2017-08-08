@@ -34,6 +34,8 @@ if(MSVC)
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
     link_directories(${CMAKE_CURRENT_SOURCE_DIR}/libs/lib/windows)
+else()
+    link_directories(${CMAKE_CURRENT_SOURCE_DIR}/libs/lib/linux)
 endif()
 
 add_subdirectory(pfopt)
