@@ -2,15 +2,15 @@ cmake_minimum_required (VERSION 2.8)
 
 project(IpoptWrapper)
 
-set(BOOST_ROOT D:/dev/boost_1_64_0)
+if(MSVC)
+    set(BOOST_ROOT D:/dev/boost_1_64_0)
+endif()
 set(USE_STATIC_BOOST ON)
 set(Boost_USE_STATIC_RUNTIME ON)
 set(Boost_USE_STATIC_LIBS ON)
 
 
 set(LIBRARY_BIN_OUTOUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${LIBRARY_BIN_OUTOUT_DIRECTORY})
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${LIBRARY_BIN_OUTOUT_DIRECTORY})
 
@@ -29,7 +29,12 @@ endif()
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/libs/include/ipopt)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/libs/include/eigen3)
-link_directories(${CMAKE_CURRENT_SOURCE_DIR}/libs/lib/windows)
+
+if(MSVC)
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
+    link_directories(${CMAKE_CURRENT_SOURCE_DIR}/libs/lib/windows)
+endif()
 
 add_subdirectory(pfopt)
 add_subdirectory(java)
