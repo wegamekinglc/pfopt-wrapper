@@ -35,6 +35,7 @@ if(MSVC)
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
     link_directories(${CMAKE_CURRENT_SOURCE_DIR}/libs/lib/windows)
 else()
+    add_definitions(-std=c++11)
     link_directories(${CMAKE_CURRENT_SOURCE_DIR}/libs/lib/linux)
 endif()
 
