@@ -3,7 +3,7 @@
 file(GLOB_RECURSE PFOPT_FILES "*.h" "*.hpp" "*.cpp")
 
 if(MSVC)
-    add_library(pfopt STATIC ${PFOPT_FIL)
+    add_library(pfopt STATIC ${PFOPT_FILE})
     target_link_libraries(pfopt ifconsol)
     target_link_libraries(pfopt ifmodintr)
     target_link_libraries(pfopt libcoinblas)
